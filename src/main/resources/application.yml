@@ -1,0 +1,35 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5431/db_email
+    username: 'postgres'
+    password: 'password'
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+        show_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+  rabbitmq:
+    addresses: amqps://ysjebmjp:mioguI9xnA9rGsM3Pu6tmOUw--WuAmpn@shrimp.rmq.cloudamqp.com/ysjebmjp
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_FROM}
+    password: ${PASSWORD_APPLICATION_GOOGLE}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+broker:
+  queue:
+    email:
+      name: default.email
